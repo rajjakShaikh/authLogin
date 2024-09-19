@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.eyeicon {
+  margin-bottom: 25px;
+  margin-right: 40px;
+}
+#root {
+  max-width: 100%;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
