@@ -8,6 +8,7 @@ function Tenstackexample() {
   const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const ShowLoggeduser = JSON.parse(localStorage.getItem("userSignup")) || {};
+  const userEmail = ShowLoggeduser.email;
 
   // Call the hook to get data and states
   const { data, isLoading, isError, error } = useCustomHookExample({
@@ -46,14 +47,21 @@ function Tenstackexample() {
     }, 1500);
   };
 
+  const handlebuttonclick = () => {
+    navigate(`/test`, {
+      state: { userEmail },
+    });
+  };
+
   return (
     <>
       <ToastContainer />
       <div className="grid grid-cols-2 p-5">
         <div className="grid justify-end">
-          <h2 className="font-bold">
-            Hii, {ShowLoggeduser?.email || "user not logged in"}
-          </h2>
+          <h2 className="font-bold">Hii,{userEmail}</h2>
+          <button className="px-3 py-1 bg-red-500" onClick={handlebuttonclick}>
+            goto toggle
+          </button>
         </div>
         <div className="grid justify-end ">
           <button
@@ -97,7 +105,7 @@ function Tenstackexample() {
                 Yes
               </button>
               <button
-                className="bg-gray-400 px-7 py-2 text-white font-medium rounded-md"
+                className="bg-gray-500 px-7 py-2 text-white font-medium rounded-md"
                 onClick={() => setShowConfirmation(false)}
               >
                 No

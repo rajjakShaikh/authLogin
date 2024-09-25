@@ -8,7 +8,8 @@ import Protectedroute from "./components/services/protectedroute";
 // import DataTablecomp from "./components/datatablecomp";
 // import Create from "./components/create";
 // import Test from "./components/test";
-// import ToggleApihit from "./components/toggleApihit";
+import ToggleApihit from "./components/toggleApihit";
+import Test from "./components/test";
 // import Swrtest from "./components/swrtest";
 // import LiftingState from "./components/liftingstate";
 
@@ -16,12 +17,10 @@ function App() {
   return (
     <>
       {/* <Formvalidate /> */}
-
       {/* <Tenstackexample /> */}
       {/* <Swrtest /> */}
       {/* <DataTablecomp /> */}
       {/* <Create />
-      // <Test />
       <ToggleApihit /> */}
       {/* <LiftingState /> */}
       {/* <ToggleApihit /> */}
@@ -33,6 +32,8 @@ function App() {
           {/* protected Routes  */}
           <Route path="/" element={<Protectedroute />}>
             <Route path="/" element={<Tenstackexample />} />
+            <Route path="/test" element={<ToggleApihit />} />
+            <Route path="/memotest" element={<Test />} />
           </Route>
         </Routes>
       </BrowserRouter>

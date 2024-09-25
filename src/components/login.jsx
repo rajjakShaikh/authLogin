@@ -24,7 +24,7 @@ function Login() {
     } else {
       sethasLoggedIn(false);
     }
-    userRef.current.focus();
+    formik.resetForm();
     if (userRef.current) userRef.current.value = "";
     if (passref.current) passref.current.value = "";
   }, []);
@@ -198,7 +198,7 @@ function Login() {
     //     </div>
     //   </form>
     // </section>
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} autoComplete="off">
       <div className="flex items-center justify-center h-screen w-full px-5 sm:px-0">
         <ToastContainer />
         <div className="flex bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-4xl w-full">

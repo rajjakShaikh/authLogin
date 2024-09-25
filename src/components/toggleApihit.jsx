@@ -1,11 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import Testchild from "./testchild";
+import { useLocation } from "react-router-dom";
 
 function ToggleApihit() {
+  const location = useLocation();
   const [userData, setUserData] = useState([]);
   const [isActive, setIsActive] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const getEmailData = location.state.userEmail;
 
   const url = "https://jsonplaceholder.typicode.com/users";
 
@@ -49,6 +53,9 @@ function ToggleApihit() {
   return (
     <div>
       <h2> test child component </h2>
+      <hr />
+      <h3 className="font-bold">getEmailData:{getEmailData}</h3>
+      <hr />
       <Testchild userData={userData} />
 
       <label className="inline-flex relative items-center cursor-pointer">
