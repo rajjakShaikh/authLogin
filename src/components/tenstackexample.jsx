@@ -10,7 +10,6 @@ function Tenstackexample() {
   const ShowLoggeduser = JSON.parse(localStorage.getItem("userSignup")) || {};
   const userEmail = ShowLoggeduser.email;
 
-  // Call the hook to get data and states
   const { data, isLoading, isError, error } = useCustomHookExample({
     staleTime: 1000 * 60 * 5,
   });
@@ -19,14 +18,11 @@ function Tenstackexample() {
   // Handle loading state
   if (isLoading) {
     return (
-      <>
-        <div className="grid place-items-center fixed inset-0 ">
-          <Spinner aria-label="Large spinner example" size="xl" />
-        </div>
-      </>
+      <div className="grid place-items-center fixed inset-0 ">
+        <Spinner aria-label="Large spinner example" size="xl" />
+      </div>
     );
   }
-
   // Handle error state
   if (isError) {
     return <p>Error: {error?.message || "Something went wrong."}</p>;

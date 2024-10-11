@@ -9,7 +9,7 @@ function ToggleApihit() {
   const [loading, setLoading] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  const getEmailData = location.state.userEmail;
+  // const getEmailData = location.state.userEmail;
 
   const url = "https://jsonplaceholder.typicode.com/users";
 
@@ -46,15 +46,15 @@ function ToggleApihit() {
     setShowConfirmation(false);
   };
 
-  const addtodo = () => {
-    console.log("add todo");
-  };
+  // const addtodo = () => {
+  //   console.log("add todo");
+  // };
 
   return (
     <div>
       <h2> test child component </h2>
       <hr />
-      <h3 className="font-bold">getEmailData:{getEmailData}</h3>
+      {/* <h3 className="font-bold">getEmailData:{getEmailData}</h3> */}
       <hr />
       <Testchild userData={userData} />
 

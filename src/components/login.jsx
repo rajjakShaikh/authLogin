@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { Shwoeye } from "../assets/showeye";
 import { Close } from "../assets/close";
 import { ToastContainer, toast } from "react-toastify";
+import CryptoJS from "crypto-js";
 
 function Login() {
   const userRef = useRef();
@@ -12,6 +13,8 @@ function Login() {
   const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   const [hasloggedIn, sethasLoggedIn] = useState(false);
+
+  const SECRET_KEY = "f$%d3L0#tS!aR@";
 
   useEffect(() => {
     const userLoggedIn = JSON.parse(localStorage.getItem("hasloggedIn"));
@@ -50,9 +53,15 @@ function Login() {
       const loggedUser = JSON.parse(localStorage.getItem("userSignup"));
 
       if (loggedUser && values.email === loggedUser.email) {
-        if (values.password === loggedUser.password) {
+        const decryptedPassword = CryptoJS.AES.decrypt(
+          loggedUser.password,
+          SECRET_KEY
+        ).toString(CryptoJS.enc.Utf8);
+
+        if (values.password === decryptedPassword) {
           localStorage.setItem("user", true);
           localStorage.setItem("hasloggedIn", true); //set the loggeduser known for the status
+          console.log(decryptedPassword, "decryptedPassword");
           toast.success("successfully login", {
             autoClose: 700,
             position: "top-center",

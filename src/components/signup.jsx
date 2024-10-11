@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Close } from "../assets/close";
 import { Shwoeye } from "../assets/showeye";
 import { ToastContainer, toast } from "react-toastify";
+import CryptoJS from "crypto-js";
 
 function Signup() {
   const navigate = useNavigate();
@@ -28,9 +29,22 @@ function Signup() {
     emailref.current.value = "";
   }, []);
 
+  const SECRET_KEY = "f$%d3L0#tS!aR@";
+
   const handleSignUp = (e) => {
     e.preventDefault();
-    localStorage.setItem("userSignup", JSON.stringify(signupdata));
+
+    const encryptedPassword = CryptoJS.AES.encrypt(
+      signupdata.password,
+      SECRET_KEY
+    ).toString();
+
+    const encryptedSignupData = {
+      ...signupdata,
+      password: encryptedPassword,
+    };
+    localStorage.setItem("userSignup", JSON.stringify(encryptedSignupData));
+    console.log("encryptedPassword", encryptedPassword);
     toast.success("successfully login", {
       autoClose: 700,
       position: "top-center",

@@ -7,7 +7,6 @@ function Create() {
   const ref = useRef(null);
 
   const handlechange = (e) => {
-    //   key value name is kye and value is target the value input
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   };
@@ -56,12 +55,14 @@ function Create() {
           placeholder="enter name"
           value={data.name}
           ref={ref}
+          autoComplete="off"
           className="border-black border"
           onChange={handlechange}
         />
         <input
           type="password"
           name="password"
+          autoComplete="off"
           value={data.password}
           placeholder="enter password"
           className="border-black border "

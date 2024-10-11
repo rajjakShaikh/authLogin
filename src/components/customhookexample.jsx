@@ -13,6 +13,7 @@ const Customhookexample = () => {
     return products.data;
   };
   console.log(fetchProducts());
+  
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["products"],
     queryFn: fetchProducts,
